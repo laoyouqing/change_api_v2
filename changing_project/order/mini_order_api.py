@@ -78,7 +78,7 @@ def mini_recharge_emergency(request_data: RechargeFilterFormat):
 def _mini_user_order_list(request_data: UserOrderFilterFormat):
     sob_handle = sob.sql_open(db_config)
     if request_data.order_status != 1:
-        cmd = f"select a.id,snum,portnum,start_time,end_time,pay_price,pay_type,order_status,pay_status,note_name,a.add_time,count(*) over() as total from wxapp_order a left join wxapp_note b on a.note_id=b.id where user_id={request_data.user_id} order by a.add_time desc limit {request_data.size} offset {request_data.offset}"
+        cmd = f"select a.id,snum,portnum,start_time,end_time,pay_price,electrct_price,server_price,pay_type,order_status,pay_status,note_name,a.add_time,count(*) over() as total from wxapp_order a left join wxapp_note b on a.note_id=b.id where user_id={request_data.user_id} order by a.add_time desc limit {request_data.size} offset {request_data.offset}"
         order = sob.select_mysql_record(sob_handle,cmd)
         if isinstance(order, list):
             if order:

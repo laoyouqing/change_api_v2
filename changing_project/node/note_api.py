@@ -35,6 +35,7 @@ class CreateFilterFormat(BaseModel):
     is_ind_dealer: int = Field(0, description="是否开启单独分成(0关闭 1开启)")
     bill_type: int = Field(0, description="计费类型(0按时 1分档)")
     predict_price: float = Field(0, description="预扣金额")
+    server_fee: float = Field(0, description="服务费(每度电/每小时)")
     first_proportion: float = Field(0, description="一级分成比例(代理商)")
     second_proportion: float = Field(0, description="二级分成比例(社区)")
     free_time: int = Field(0, description="免费停放时长（分钟）")
